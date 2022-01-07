@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de marcas{% endblock title %}
+
+{% block content %}
+<form method="get">
+    <div class="row justify-content-md-center my-3">
+        <div class="col col-lg-8">
+            <input type="text" name="busca" class="form-control" placeholder="Pesquisar marcas">
+        </div>
+        <div class="col col-md-auto">
+            <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </div>
+    </div>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Produtos</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for marca in marcas %}
+        <tr>
+            <td>{{ marca.nome }}</td>
+            <td>{{ marca.categoria }}</td>
+            <td>
+                <a href="{% url 'marca_produtos_list' pk=marca.id %}">Ver produtos</a>
+            </td>
+            <td>
+                <a href="{% url 'editar_marca' pk=marca.id %}"><i class="bi bi-pencil-fill"></i></a>
+                <a href="{% url 'apagar_marca' pk=marca.id %}"><i class="bi bi-trash-fill"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'criar_marca' %}">
+    <button type="button" class="btn btn-primary">Criar Produto</button>
+</a>
+{% endblock content %}

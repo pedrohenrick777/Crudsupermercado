@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Deletar produto{% endblock title %}
+
+{% block content %}
+<div class="my-3">
+    <h1>Deseja apagar o produto "{{produto.descricao}}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <a href="{% url 'lista_produtos' %}">
+            <button type="button" class="btn btn-primary">Cancelar</button>
+        </a>
+        <button type="submit" class="btn btn-danger">Apagar</button>
+    </form>
+</div>
+{% endblock content %}
