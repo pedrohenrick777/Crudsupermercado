@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Produto{% endblock title %}
+
+{% block content %}
+<div class="my-3">
+    <ul class="list-group">
+        <li class="list-group-item">
+            Descrição: {{ produto.descricao }}
+        </li>
+        <li class="list-group-item">
+            Preço: {{ produto.preco }}
+        </li>
+        <li class="list-group-item">
+            Marca: {{ produto.marca }}
+        </li>
+        <li class="list-group-item">
+            <p>Categorias:</p>
+            {% for categoria in produto.categoria.all %}
+            <p class="my-0"><a href="{% url 'categoria_produtos_list' pk=categoria.pk %}">{{ categoria }}</a></p>
+            {% endfor %}
+        </li>
+    </ul>
+</div>
+{% endblock content %}

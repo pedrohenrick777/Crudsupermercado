@@ -29,6 +29,7 @@
             <td>{{ produto.preco }}</td>
             <td>{{ produto.marca }}</td>
             <td>
+                <a href="{% url 'show_produto' pk=produto.id %}"><i class="bi bi-eye-fill"></i></a>
                 <a href="{% url 'editar_produto' pk=produto.id %}"><i class="bi bi-pencil-fill"></i></a>
                 <a href="{% url 'apagar_produto' pk=produto.id %}"><i class="bi bi-trash-fill"></i></a>
             </td>

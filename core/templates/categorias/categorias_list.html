@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Listagem de Categorias{% endblock title %}
+
+{% block content %}
+<form method="get">
+    <div class="row justify-content-md-center my-3">
+        <div class="col col-lg-8">
+            <input type="text" name="busca" class="form-control" placeholder="Pesquisar categorias">
+        </div>
+        <div class="col col-md-auto">
+            <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </div>
+    </div>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Produtos</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for categoria in categorias %}
+        <tr>
+            <td>{{categoria.nome}}</td>
+            <td>
+                <a href="{% url 'categoria_produtos_list' pk=categoria.id %}">Ver produtos</a>
+            </td>
+            <td>
+                <a href="{% url 'editar_categoria' pk=categoria.id %}"><i class="bi bi-pencil-fill"></i></a>
+                <a href="{% url 'apagar_categoria' pk=categoria.id %}"><i class="bi bi-trash-fill"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'criar_categoria' %}">
+    <button type="button" class="btn btn-primary">Criar Categoria</button>
+</a>
+{% endblock content %}
