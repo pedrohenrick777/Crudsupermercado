@@ -2,6 +2,10 @@
 
 Feito durante estudos de banco de dados em Django, o projeto consiste em um sistema onde é possível adicionar produtos com suas marcas e respectivas categorias.
 
+## Contexto
+
+Este projeto foi feito durante meus estudos de relacionamento utilizando o ORM do django.
+
 ## Telas
 
 ![lista de Produtos](./docs/img/list_produtos.png)
